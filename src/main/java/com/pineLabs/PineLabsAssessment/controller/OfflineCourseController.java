@@ -19,8 +19,11 @@ public class OfflineCourseController {
     public ResponseEntity<?> getAll(@RequestParam(name = "status") String status) {
         switch (status) {
             case "offline":
-                return new ResponseEntity<>(this.courseOfflineService.findAll(), HttpStatus.OK);
+                return new ResponseEntity<>(this.courseOfflineService.findAllActiveCourses(), HttpStatus.OK);
             case "online":
+                /*
+                 * TODO: response for online courses
+                 */
                 return null;
             default:
                 throw new RuntimeException("Invalid arguments");
@@ -33,6 +36,9 @@ public class OfflineCourseController {
             case "offline":
                 return new ResponseEntity<>(this.courseOfflineService.findById(UUID.fromString(uid)), HttpStatus.OK);
             case "online":
+                /*
+                 * TODO: response for offline courses
+                 */
                 return null;
             default:
                 throw new RuntimeException("Invalid arguments");

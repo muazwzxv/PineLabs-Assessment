@@ -2,6 +2,7 @@ package com.pineLabs.PineLabsAssessment.service.impl;
 
 import com.pineLabs.PineLabsAssessment.exception.CourseNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
+import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import lombok.AllArgsConstructor;
@@ -25,11 +26,16 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
 
     @Override
     public List<CourseOffline> findAll() {
-        return courseOfflineRepository.findAll();
+        return this.courseOfflineRepository.findAll();
     }
 
     @Override
     public void deleteById(UUID uid) {
         this.courseOfflineRepository.deleteById(uid);
+    }
+
+    @Override
+    public List<CourseOffline> findAllActiveCourses() {
+        return this.courseOfflineRepository.getCourseOfflineByStatus(CourseStatus.ACTIVE);
     }
 }

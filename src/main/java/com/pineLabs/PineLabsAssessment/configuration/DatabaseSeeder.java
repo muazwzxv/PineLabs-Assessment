@@ -48,9 +48,20 @@ public class DatabaseSeeder {
                     .totalStudent(300)
                     .build();
 
+            CourseOffline course4 = CourseOffline.builder()
+                    .courseName("How to be a good student")
+                    .description("Motivation on being a good student")
+                    .status(CourseStatus.ARCHIVED)
+                    .category(CourseCategory.MOTIVATION)
+                    .instructorName("Joe Mama")
+                    .venue("KLCC")
+                    .totalStudent(300)
+                    .build();
+
             repository.save(course1);
             repository.save(course2);
             repository.save(course3);
+            repository.save(course4);
         };
     }
 

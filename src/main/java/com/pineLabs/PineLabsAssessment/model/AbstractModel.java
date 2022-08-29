@@ -13,11 +13,17 @@ public abstract class AbstractModel {
     @Id
     @GeneratedValue
     protected UUID id;
-    protected LocalDateTime createdAt;
-    protected LocalDateTime deletedAt;
+    protected LocalDateTime created_on;
+    protected LocalDateTime updated_on;
+    protected LocalDateTime deleted_on;
 
     @PrePersist
-    public void generateCreatedAt() {
-        this.createdAt = LocalDateTime.now();
+    public void setCreated_on() {
+        this.created_on = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void setUpdated_on() {
+        this.updated_on = LocalDateTime.now();
     }
 }

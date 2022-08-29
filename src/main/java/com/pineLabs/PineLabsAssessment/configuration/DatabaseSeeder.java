@@ -68,10 +68,10 @@ public class DatabaseSeeder {
     }
 
     @Bean
-    CommandLineRunner initDatabase(CourseOnlineRepository repository) {
+    CommandLineRunner initDatabaseOnline(CourseOnlineRepository repository) {
         return args -> {
             CourseOnline course1 = CourseOnline.builder()
-                    .courseName("How to rank up to immortal")
+                    .courseName("How to rank up your medal")
                     .description("Just play")
                     .status(CourseStatus.ACTIVE)
                     .category(CourseCategory.MOTIVATION)
@@ -85,24 +85,46 @@ public class DatabaseSeeder {
                     .description("Master matrices in 1 hour")
                     .status(CourseStatus.ARCHIVED)
                     .category(CourseCategory.MATHEMATICS)
-                    .instructorName("Mr. John")
+                    .instructorName("John Doe")
                     .link("https://www.w3schools.com/java/java_enums.asp")
                     .total_student(300)
                     .build();
 
             CourseOnline course3 = CourseOnline.builder()
                     .courseName("Meiosis and Mitosis")
-                    .description("From 1 became 2")
-                    .status(CourseStatus.PENDING)
+                    .description("From 1 become 2")
+                    .status(CourseStatus.ACTIVE)
                     .category(CourseCategory.SCIENCE)
-                    .instructorName("Mrs Lili")
+                    .instructorName("Lily")
                     .link("https://byjus.com/biology/mitosis-and-meiosis/")
                     .total_student(5)
+                    .build();
+
+            CourseOnline course4 = CourseOnline.builder()
+                    .courseName("Respiration")
+                    .description("Respiration is real")
+                    .status(CourseStatus.ACTIVE)
+                    .category(CourseCategory.SCIENCE)
+                    .instructorName("Natsuki")
+                    .link("https://byjus.com/biology/respiration/")
+                    .total_student(250)
+                    .build();
+
+            CourseOnline course5 = CourseOnline.builder()
+                    .courseName("Art")
+                    .description("What is art")
+                    .status(CourseStatus.ARCHIVED)
+                    .category(CourseCategory.ART)
+                    .instructorName("Yumi")
+                    .link("https://byjus.com/art/art of hell/")
+                    .total_student(500)
                     .build();
 
             repository.save(course1);
             repository.save(course2);
             repository.save(course3);
+            repository.save(course4);
+            repository.save(course5);
 
         };
     }

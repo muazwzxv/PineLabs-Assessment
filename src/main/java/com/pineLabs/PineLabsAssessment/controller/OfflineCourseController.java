@@ -1,6 +1,7 @@
 package com.pineLabs.PineLabsAssessment.controller;
 
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
+import com.pineLabs.PineLabsAssessment.service.ICourseOnlineService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.UUID;
 public class OfflineCourseController {
 
     private final ICourseOfflineService courseOfflineService;
+    private final ICourseOnlineService courseOnlineService;
 
     @GetMapping
     public ResponseEntity<?> getAll(@RequestParam(name = "status") String status) {
@@ -21,10 +23,7 @@ public class OfflineCourseController {
             case "offline":
                 return new ResponseEntity<>(this.courseOfflineService.findAllActiveCourses(), HttpStatus.OK);
             case "online":
-                /*
-                 * TODO: response for online courses
-                 */
-                return null;
+                return new ResponseEntity<>(this.courseOnlineService.findAllActiveCourses(), HttpStatus.OK);
             default:
                 throw new RuntimeException("Invalid arguments");
         }
@@ -36,10 +35,7 @@ public class OfflineCourseController {
             case "offline":
                 return new ResponseEntity<>(this.courseOfflineService.findById(UUID.fromString(uid)), HttpStatus.OK);
             case "online":
-                /*
-                 * TODO: response for offline courses
-                 */
-                return null;
+                return new ResponseEntity<>(this.courseOnlineService.findById(UUID.fromString(uid)), HttpStatus.OK);
             default:
                 throw new RuntimeException("Invalid arguments");
         }

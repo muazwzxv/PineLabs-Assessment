@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -17,11 +18,12 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     private final CourseOfflineRepository courseOfflineRepository;
 
     @Override
-    public CourseOffline findById(UUID uid) {
-        return this.courseOfflineRepository.findById(uid)
-                .orElseThrow(() -> {
-                    throw new CourseNotFoundException("uuid", uid.toString());
-                });
+    public CourseOffline findById(UUID uid) throws CourseNotFoundException {
+        Optional<CourseOffline> course = this.courseOfflineRepository.findById(uid);
+        if (!course.isPresent())
+            throw new CourseNotFoundException("UUID", uid.toString());
+
+        return course.get();
     }
 
     @Override

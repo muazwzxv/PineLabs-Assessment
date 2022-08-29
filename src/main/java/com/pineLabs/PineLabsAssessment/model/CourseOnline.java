@@ -1,9 +1,7 @@
 package com.pineLabs.PineLabsAssessment.model;
 
-import com.pineLabs.PineLabsAssessment.model.enums.Category;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
-import com.pineLabs.PineLabsAssessment.model.enums.Status;
 import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

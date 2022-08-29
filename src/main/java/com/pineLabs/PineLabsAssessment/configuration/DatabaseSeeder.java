@@ -1,9 +1,11 @@
 package com.pineLabs.PineLabsAssessment.configuration;
 
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
+import com.pineLabs.PineLabsAssessment.model.CourseOnline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
+import com.pineLabs.PineLabsAssessment.repository.CourseOnlineRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -54,4 +56,43 @@ public class DatabaseSeeder {
         };
     }
 
+    @Bean
+    CommandLineRunner initDatabase(CourseOnlineRepository repository) {
+        return args -> {
+            CourseOnline course1 = CourseOnline.builder()
+                    .courseName("How to rank up to immortal")
+                    .description("Just play")
+                    .status(CourseStatus.ACTIVE)
+                    .category(CourseCategory.MOTIVATION)
+                    .instructorName("Marci")
+                    .link("https://www.tutorialspoint.com/junit/junit_writing_tests.htm")
+                    .total_student(200)
+                    .build();
+
+            CourseOnline course2 = CourseOnline.builder()
+                    .courseName("Matrices")
+                    .description("Master matrices in 1 hour")
+                    .status(CourseStatus.ARCHIVED)
+                    .category(CourseCategory.MATHEMATICS)
+                    .instructorName("Mr. John")
+                    .link("https://www.w3schools.com/java/java_enums.asp")
+                    .total_student(300)
+                    .build();
+
+            CourseOnline course3 = CourseOnline.builder()
+                    .courseName("Meiosis and Mitosis")
+                    .description("From 1 became 2")
+                    .status(CourseStatus.PENDING)
+                    .category(CourseCategory.SCIENCE)
+                    .instructorName("Mrs Lili")
+                    .link("https://byjus.com/biology/mitosis-and-meiosis/")
+                    .total_student(5)
+                    .build();
+
+            repository.save(course1);
+            repository.save(course2);
+            repository.save(course3);
+
+        };
+    }
 }

@@ -26,7 +26,7 @@ public class OfflineCourseController {
            case "offline":
                return new ResponseEntity<>(this.courseOfflineService.findAll(), HttpStatus.OK);
            case "online":
-               break;
+               return new ResponseEntity<>(this.)
            default:
                break;
        }

@@ -2,6 +2,7 @@ package com.pineLabs.PineLabsAssessment.service.impl;
 
 import com.pineLabs.PineLabsAssessment.exception.CourseNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
+import com.pineLabs.PineLabsAssessment.model.CourseOnline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
 import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
@@ -33,8 +34,9 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     }
 
     @Override
-    public void deleteById(UUID uid) {
+    public Optional<CourseOnline> deleteById(UUID uid) {
         this.courseOfflineRepository.deleteById(uid);
+        return null;
     }
 
     @Override

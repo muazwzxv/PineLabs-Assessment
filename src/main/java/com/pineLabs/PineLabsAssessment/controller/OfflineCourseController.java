@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -47,7 +48,7 @@ public class OfflineCourseController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody CreateOfflineCourseRequest request, @RequestParam(name = "status") String status) {
+    public ResponseEntity<?> create(@RequestBody @Valid CreateOfflineCourseRequest request, @RequestParam(name = "status") String status) {
         switch (status) {
             case "offline":
                 return new ResponseEntity<>(this.courseOfflineService.create(request), HttpStatus.CREATED);

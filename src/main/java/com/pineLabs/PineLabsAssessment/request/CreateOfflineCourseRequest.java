@@ -6,7 +6,7 @@ import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import lombok.Getter;
 
 @Getter
-public class CreateOfflineCourse {
+public class CreateOfflineCourseRequest {
     @JsonProperty("course_name")
     private String courseName;
 

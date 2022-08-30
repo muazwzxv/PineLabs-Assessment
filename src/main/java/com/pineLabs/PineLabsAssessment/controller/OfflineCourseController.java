@@ -1,5 +1,6 @@
 package com.pineLabs.PineLabsAssessment.controller;
 
+import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,56 @@ public class OfflineCourseController {
                 return new ResponseEntity<>(this.courseOfflineService.findById(UUID.fromString(uid)), HttpStatus.OK);
             case "online":
                 /*
+                 * TODO: response for online courses
+                 */
+                return null;
+            default:
+                throw new RuntimeException("Invalid arguments");
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody CreateOfflineCourseRequest request, @RequestParam(name = "status") String status) {
+        switch (status) {
+            case "offline":
+                return new ResponseEntity<>(this.courseOfflineService.create(request), HttpStatus.CREATED);
+            case "online":
+                /*
+                 * TODO: response for online courses
+                 */
+                return null;
+            default:
+                throw new RuntimeException("Invalid arguments");
+        }
+    }
+
+    @PutMapping("/{uid}")
+    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status) {
+        switch (status) {
+            case "offline":
+                /*
                  * TODO: response for offline courses
+                 */
+            case "online":
+                /*
+                 * TODO: response for online courses
+                 */
+                return null;
+            default:
+                throw new RuntimeException("Invalid arguments");
+        }
+    }
+
+    @DeleteMapping("/{uid}")
+    public ResponseEntity<?> deleteById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status) {
+        switch (status) {
+            case "offline":
+                /*
+                 * TODO: response for offline courses
+                 */
+            case "online":
+                /*
+                 * TODO: response for online courses
                  */
                 return null;
             default:

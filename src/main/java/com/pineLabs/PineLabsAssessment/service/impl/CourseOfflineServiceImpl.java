@@ -33,8 +33,14 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     }
 
     @Override
-    public void deleteById(UUID uid) {
+    public CourseOffline deleteById(UUID uid) {
+        Optional<CourseOffline> courseOffline = this.courseOfflineRepository.findById(uid);
+        if (!courseOffline.isPresent())
+            throw new CourseNotFoundException("UUID", uid);
+
         this.courseOfflineRepository.deleteById(uid);
+
+        return courseOffline.get();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.pineLabs.PineLabsAssessment.controller;
 
+import com.pineLabs.PineLabsAssessment.exception.InvalidParameterException;
 import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import lombok.AllArgsConstructor;
@@ -43,7 +44,7 @@ public class CourseController {
                  */
                 return null;
             default:
-                throw new RuntimeException("Invalid arguments");
+                throw new InvalidParameterException();
         }
     }
 
@@ -58,7 +59,7 @@ public class CourseController {
                  */
                 return null;
             default:
-                throw new RuntimeException("Invalid arguments");
+                throw new InvalidParameterException();
         }
     }
 
@@ -81,9 +82,7 @@ public class CourseController {
     public ResponseEntity<?> deleteById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status) {
         switch (status) {
             case "offline":
-                /*
-                 * TODO: response for offline courses
-                 */
+                return new ResponseEntity<>(this.courseOfflineService.deleteById(UUID.fromString(uid)), HttpStatus.ACCEPTED);
             case "online":
                 /*
                  * TODO: response for online courses

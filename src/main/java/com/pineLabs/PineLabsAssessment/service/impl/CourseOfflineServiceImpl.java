@@ -4,6 +4,7 @@ import com.pineLabs.PineLabsAssessment.exception.CourseNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
+import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,20 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     @Override
     public List<CourseOffline> findAllActiveCourses() {
         return this.courseOfflineRepository.getCourseOfflineByStatus(CourseStatus.ACTIVE);
+    }
+
+    @Override
+    public CourseOffline create(CreateOfflineCourseRequest request) {
+        CourseOffline course = CourseOffline.builder()
+                .courseName(request.getCourseName())
+                .category(request.getCategory())
+                .status(CourseStatus.PENDING)
+                .description(request.getDescription())
+                .venue(request.getVenue())
+                .instructorName(request.getInstructorName())
+                .totalStudent(request.getTotalStudent())
+                .build();
+
+        return this.courseOfflineRepository.save(course);
     }
 }

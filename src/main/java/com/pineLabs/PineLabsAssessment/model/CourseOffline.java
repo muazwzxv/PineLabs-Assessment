@@ -8,6 +8,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import javax.persistence.Enumerated;
 @Getter
 @Setter
 @Builder
-public class CourseOffline extends AbstractModel{
+public class CourseOffline extends AbstractModel {
     private String courseName;
     private String description;
     private String instructorName;
@@ -25,6 +26,8 @@ public class CourseOffline extends AbstractModel{
 
     @Enumerated(EnumType.STRING)
     private CourseStatus status;
+
+    private LocalDateTime courseDate;
 
     private String venue;
     private Integer totalStudent;

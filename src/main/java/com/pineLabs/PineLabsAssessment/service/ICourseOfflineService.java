@@ -10,4 +10,6 @@ public interface ICourseOfflineService extends IService<CourseOffline, UUID> {
     List<CourseOffline> findAllActiveCourses();
 
     CourseOffline create(CreateOfflineCourseRequest request);
+
+    CourseOffline updateById(UUID uid, CreateOfflineCourseRequest req);
 }

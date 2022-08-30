@@ -1,1 +1,1 @@
-GET http://localhost:8080/api/v1/courses?status=offline
+GET http://localhost:8080/api/v1/courses/6d051f7a-609d-4c75-852d-e5d2cd2c2d37?status=offline

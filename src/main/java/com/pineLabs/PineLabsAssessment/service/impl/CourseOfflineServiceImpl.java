@@ -56,4 +56,23 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
 
         return this.courseOfflineRepository.save(course);
     }
+
+    @Override
+    public CourseOffline updateById(UUID uid, CreateOfflineCourseRequest request) {
+
+        return this.courseOfflineRepository.findById(uid)
+                .map(courseOffline -> {
+                    courseOffline.setCourseName(request.getCourseName());
+                    courseOffline.setCategory(request.getCategory());
+                    courseOffline.setDescription(request.getDescription());
+                    courseOffline.setVenue(request.getVenue());
+                    courseOffline.setInstructorName(request.getInstructorName());
+                    courseOffline.setTotalStudent(request.getTotalStudent());
+
+                    return this.courseOfflineRepository.save(courseOffline);
+                })
+                .orElseThrow(() -> {
+                    throw new CourseNotFoundException("UUID", uid);
+                });
+    }
 }

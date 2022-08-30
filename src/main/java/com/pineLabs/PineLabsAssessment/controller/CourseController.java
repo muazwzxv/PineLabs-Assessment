@@ -13,7 +13,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/courses")
 @AllArgsConstructor
-public class OfflineCourseController {
+public class CourseController {
 
     private final ICourseOfflineService courseOfflineService;
 
@@ -63,12 +63,10 @@ public class OfflineCourseController {
     }
 
     @PutMapping("/{uid}")
-    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status) {
+    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status, @RequestBody CreateOfflineCourseRequest request) {
         switch (status) {
             case "offline":
-                /*
-                 * TODO: response for offline courses
-                 */
+                return new ResponseEntity<>(this.courseOfflineService.updateById(UUID.fromString(uid), request), HttpStatus.ACCEPTED);
             case "online":
                 /*
                  * TODO: response for online courses

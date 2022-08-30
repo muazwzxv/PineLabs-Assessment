@@ -8,7 +8,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class CourseOffline extends AbstractModel {
     @Enumerated(EnumType.STRING)
     private CourseStatus status;
 
-    private LocalDateTime courseDate;
+    private LocalDate courseDate;
 
     private String venue;
     private Integer totalStudent;

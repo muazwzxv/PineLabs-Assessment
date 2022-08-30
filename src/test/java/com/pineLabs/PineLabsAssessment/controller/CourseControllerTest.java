@@ -21,8 +21,8 @@ import java.util.List;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-@WebMvcTest(OfflineCourseController.class)
-public class OfflineCourseControllerTest {
+@WebMvcTest(CourseController.class)
+public class CourseControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

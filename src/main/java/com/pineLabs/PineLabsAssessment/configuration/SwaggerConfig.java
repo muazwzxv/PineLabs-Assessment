@@ -12,8 +12,8 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI openAPI() {
-        Info info = new Info().title("B40Locator-API")
-                .description("We care about B40 :)");
+        Info info = new Info().title("Pine Labs Assessment Muaz&Ali")
+                .description("Offline and online courses");
         return new OpenAPI()
                 .components(new Components())
                 .info(info);

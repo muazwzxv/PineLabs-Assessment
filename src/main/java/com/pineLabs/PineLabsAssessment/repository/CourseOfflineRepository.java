@@ -24,9 +24,9 @@ public interface CourseOfflineRepository extends JpaRepository<CourseOffline, UU
                     "co.description = :description," +
                     "co.venue = :venue," +
                     "co.courseDate = :courseDate," +
-                    "co.instructorName = :instructorname," +
+                    "co.instructorName = :instructorName," +
                     "co.totalStudent = :totalStudent " +
-                    "where co.id = :id"
+                    "where co.id = :uid"
 
     )
     void updateCourse(

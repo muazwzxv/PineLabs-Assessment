@@ -12,4 +12,6 @@ public interface ICourseOfflineService extends IService<CourseOffline, UUID> {
     CourseOffline create(CreateOfflineCourseRequest request);
 
     CourseOffline updateById(UUID uid, CreateOfflineCourseRequest req);
+
+    void updateByIdJpa(UUID uid, CreateOfflineCourseRequest req);
 }

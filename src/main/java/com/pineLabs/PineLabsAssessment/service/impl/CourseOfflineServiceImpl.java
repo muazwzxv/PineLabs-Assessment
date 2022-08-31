@@ -7,6 +7,7 @@ import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
 import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,11 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
         if (!courseOffline.isPresent())
             throw new CourseNotFoundException("UUID", uid);
 
-        this.courseOfflineRepository.deleteById(uid);
+        try {
+            this.courseOfflineRepository.deleteById(uid);
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
 
         return courseOffline.get();
     }
@@ -75,9 +80,31 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
         courseToUpdate.setCategory(request.getCategory());
         courseToUpdate.setDescription(request.getDescription());
         courseToUpdate.setVenue(request.getVenue());
+        courseToUpdate.setCourseDate(request.getCourseDate());
         courseToUpdate.setInstructorName(request.getInstructorName());
         courseToUpdate.setTotalStudent(request.getTotalStudent());
 
+
         return this.courseOfflineRepository.save(courseToUpdate);
+    }
+
+
+    @Override
+    public void updateByIdJpa(UUID uid, CreateOfflineCourseRequest request) {
+        boolean found = this.courseOfflineRepository.existsById(uid);
+        if (!found)
+            throw new CourseNotFoundException("UUID", uid.toString());
+
+        this.courseOfflineRepository
+                .updateCourse(
+                        request.getCourseName(),
+                        request.getCategory(),
+                        request.getDescription(),
+                        request.getVenue(),
+                        request.getCourseDate(),
+                        request.getInstructorName(),
+                        request.getTotalStudent(),
+                        uid
+                );
     }
 }

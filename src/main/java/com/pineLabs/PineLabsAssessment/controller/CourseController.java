@@ -64,10 +64,11 @@ public class CourseController {
     }
 
     @PutMapping("/{uid}")
-    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status, @RequestBody CreateOfflineCourseRequest request) {
+    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status, @RequestBody @Valid CreateOfflineCourseRequest request) {
         switch (status) {
             case "offline":
                 return new ResponseEntity<>(this.courseOfflineService.updateById(UUID.fromString(uid), request), HttpStatus.ACCEPTED);
+//                return new ResponseEntity<>(this.courseOfflineService.updateByIdJpa(UUID.fromString(uid), request), HttpStatus.ACCEPTED);
             case "online":
                 /*
                  * TODO: response for online courses

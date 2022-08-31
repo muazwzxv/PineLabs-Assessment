@@ -12,6 +12,8 @@ public interface ICourseOnlineService extends IService<CourseOnline, UUID> {
 
     CourseOnline create(CreateOnlineCourseRequest request);
 
-    Optional<CourseOnline> updateById(CourseOnline updatedCourse, UUID uuid);
+    CourseOnline updateById(UUID uid, CreateOnlineCourseRequest req);
+
+//    Optional<CourseOnline> updateById(CourseOnline updatedCourse, UUID uuid);
 
 }

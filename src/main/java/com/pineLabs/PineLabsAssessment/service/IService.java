@@ -10,5 +10,5 @@ public interface IService<T, ID> {
 
     List<T> findAll();
 
-    Optional<CourseOnline> deleteById(ID uid);
+    T deleteById(ID uid);
 }

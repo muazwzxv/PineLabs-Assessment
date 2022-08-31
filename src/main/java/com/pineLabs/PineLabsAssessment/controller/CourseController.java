@@ -1,6 +1,6 @@
 package com.pineLabs.PineLabsAssessment.controller;
 
-import com.pineLabs.PineLabsAssessment.model.CourseOnline;
+import com.pineLabs.PineLabsAssessment.exception.InvalidParameterException;
 import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.request.CreateOnlineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/courses")
 @AllArgsConstructor
-public class OfflineCourseController {
+public class CourseController {
 
     private final ICourseOfflineService courseOfflineService;
     private final ICourseOnlineService courseOnlineService;
@@ -41,43 +41,35 @@ public class OfflineCourseController {
             case "online":
                 return new ResponseEntity<>(this.courseOnlineService.findById(UUID.fromString(uid)), HttpStatus.OK);
             default:
-                throw new RuntimeException("Invalid arguments");
+                throw new InvalidParameterException();
         }
     }
 
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid CreateOfflineCourseRequest request,@RequestBody @Valid CreateOnlineCourseRequest requests, @RequestParam(name = "status") String status) {
-        switch (status) {
-            case "offline":
-                return new ResponseEntity<>(this.courseOfflineService.create(request), HttpStatus.CREATED);
-            case "online":
-                return new ResponseEntity<>(this.courseOnlineService.create(requests), HttpStatus.CREATED);
-            default:
-                throw new RuntimeException("Invalid arguments");
-        }
+    @PostMapping("/offline")
+    public ResponseEntity<?> createOffline(@RequestBody @Valid CreateOfflineCourseRequest request) {
+        return new ResponseEntity<>(this.courseOfflineService.create(request), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{uid}")
-    public ResponseEntity<?> updateById(@RequestBody CourseOnline courseOnline, @PathVariable("uid") String uid, @RequestParam(name = "status") String status) {
-        switch (status) {
-            case "offline":
-                /*
-                 * TODO: response for offline courses
-                 */
-            case "online":
-                return new ResponseEntity<>(this.courseOnlineService.updateById(courseOnline, UUID.fromString(uid)), HttpStatus.ACCEPTED);
-            default:
-                throw new RuntimeException("Invalid arguments");
-        }
+    @PostMapping("/online")
+    public ResponseEntity<?> createOnline(@RequestBody @Valid CreateOnlineCourseRequest onlineRequest) {
+        return new ResponseEntity<>(this.courseOnlineService.create(onlineRequest), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{uid}")
+    @PutMapping("/offline/{uid}")
+    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestBody @Valid CreateOfflineCourseRequest request) {
+        return new ResponseEntity<>(this.courseOfflineService.updateById(UUID.fromString(uid), request), HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/online/{uid}")
+    public ResponseEntity<?> updateById(@PathVariable("uid") String uid, @RequestBody @Valid CreateOnlineCourseRequest onlineRequest) {
+        return new ResponseEntity<>(this.courseOnlineService.updateById(UUID.fromString(uid), onlineRequest), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/{uid}")
     public ResponseEntity<?> deleteById(@PathVariable("uid") String uid, @RequestParam(name = "status") String status) {
         switch (status) {
             case "offline":
-                /*
-                 * TODO: response for offline courses
-                 */
+                return new ResponseEntity<>(this.courseOfflineService.deleteById(UUID.fromString(uid)), HttpStatus.ACCEPTED);
             case "online":
                 return new ResponseEntity<>(this.courseOnlineService.deleteById(UUID.fromString(uid)), HttpStatus.ACCEPTED);
             default:

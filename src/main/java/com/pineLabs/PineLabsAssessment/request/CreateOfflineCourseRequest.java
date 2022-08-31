@@ -1,11 +1,15 @@
 package com.pineLabs.PineLabsAssessment.request;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import lombok.Getter;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Getter
 public class CreateOfflineCourseRequest {
@@ -22,14 +26,19 @@ public class CreateOfflineCourseRequest {
     private String instructorName;
 
     @JsonProperty("category")
-    @NotBlank
+//    @ValueOfEnum(enumClass = CourseCategory.class)
     private CourseCategory category;
 
-    @JsonProperty("category")
+    @JsonProperty("venue")
     @NotBlank
     private String venue;
 
     @JsonProperty("total_student")
-    @NotBlank
-    private Integer totalStudent;
+    @Min(value = 0)
+    private int totalStudent;
+
+    @JsonProperty("course_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Future
+    private LocalDate courseDate;
 }

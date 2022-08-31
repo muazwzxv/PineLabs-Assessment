@@ -77,7 +77,7 @@ public class DatabaseSeeder {
                     .category(CourseCategory.MOTIVATION)
                     .instructorName("Marci")
                     .link("https://www.tutorialspoint.com/junit/junit_writing_tests.htm")
-                    .total_student(200)
+                    .totalStudent(200)
                     .build();
 
             CourseOnline course2 = CourseOnline.builder()
@@ -87,7 +87,7 @@ public class DatabaseSeeder {
                     .category(CourseCategory.MATHEMATICS)
                     .instructorName("John Doe")
                     .link("https://www.w3schools.com/java/java_enums.asp")
-                    .total_student(300)
+                    .totalStudent(300)
                     .build();
 
             CourseOnline course3 = CourseOnline.builder()
@@ -97,7 +97,7 @@ public class DatabaseSeeder {
                     .category(CourseCategory.SCIENCE)
                     .instructorName("Lily")
                     .link("https://byjus.com/biology/mitosis-and-meiosis/")
-                    .total_student(5)
+                    .totalStudent(5)
                     .build();
 
             CourseOnline course4 = CourseOnline.builder()
@@ -107,7 +107,7 @@ public class DatabaseSeeder {
                     .category(CourseCategory.SCIENCE)
                     .instructorName("Natsuki")
                     .link("https://byjus.com/biology/respiration/")
-                    .total_student(250)
+                    .totalStudent(250)
                     .build();
 
             CourseOnline course5 = CourseOnline.builder()
@@ -117,7 +117,7 @@ public class DatabaseSeeder {
                     .category(CourseCategory.ART)
                     .instructorName("Yumi")
                     .link("https://byjus.com/art/art of hell/")
-                    .total_student(500)
+                    .totalStudent(500)
                     .build();
 
             repository.save(course1);

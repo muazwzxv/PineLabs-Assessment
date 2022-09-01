@@ -12,6 +12,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 
 @Configuration
 public class DatabaseSeeder {
@@ -78,6 +81,7 @@ public class DatabaseSeeder {
                     .instructorName("Marci")
                     .link("https://www.tutorialspoint.com/junit/junit_writing_tests.htm")
                     .totalStudent(200)
+                    .courseDate(LocalDate.of(2023, Month.JULY, 23))
                     .build();
 
             CourseOnline course2 = CourseOnline.builder()
@@ -88,6 +92,7 @@ public class DatabaseSeeder {
                     .instructorName("John Doe")
                     .link("https://www.w3schools.com/java/java_enums.asp")
                     .totalStudent(300)
+                    .courseDate(LocalDate.of(2022, Month.SEPTEMBER, 25))
                     .build();
 
             CourseOnline course3 = CourseOnline.builder()
@@ -98,6 +103,7 @@ public class DatabaseSeeder {
                     .instructorName("Lily")
                     .link("https://byjus.com/biology/mitosis-and-meiosis/")
                     .totalStudent(5)
+                    .courseDate(LocalDate.of(2022, Month.DECEMBER, 2))
                     .build();
 
             CourseOnline course4 = CourseOnline.builder()
@@ -108,6 +114,7 @@ public class DatabaseSeeder {
                     .instructorName("Natsuki")
                     .link("https://byjus.com/biology/respiration/")
                     .totalStudent(250)
+                    .courseDate(LocalDate.of(2023, Month.FEBRUARY, 21))
                     .build();
 
             CourseOnline course5 = CourseOnline.builder()
@@ -118,6 +125,7 @@ public class DatabaseSeeder {
                     .instructorName("Yumi")
                     .link("https://byjus.com/art/art of hell/")
                     .totalStudent(500)
+                    .courseDate(LocalDate.of(2023, Month.MARCH, 12))
                     .build();
 
             repository.save(course1);

@@ -61,6 +61,7 @@ public class CourseOnlineServiceImpl implements ICourseOnlineService {
                 .link(requests.getLink())
                 .instructorName(requests.getInstructorName())
                 .totalStudent(requests.getTotalStudent())
+                .courseDate(requests.getCourseDate())
                 .build();
         return this.courseOnlineRepository.save(course);
     }
@@ -78,6 +79,7 @@ public class CourseOnlineServiceImpl implements ICourseOnlineService {
         courseToUpdate.setLink(request.getLink());
         courseToUpdate.setInstructorName(request.getInstructorName());
         courseToUpdate.setTotalStudent(request.getTotalStudent());
+        courseToUpdate.setCourseDate(request.getCourseDate());
 
         return this.courseOnlineRepository.save(courseToUpdate);
     }

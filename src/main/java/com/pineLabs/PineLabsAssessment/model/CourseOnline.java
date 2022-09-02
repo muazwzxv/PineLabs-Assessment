@@ -37,7 +37,7 @@ public class CourseOnline extends AbstractModel {
     private String link;
 
     @JsonProperty("category")
-    private int category;
+    private Integer category;
 
     @JsonProperty("total_student")
     private Integer totalStudent;

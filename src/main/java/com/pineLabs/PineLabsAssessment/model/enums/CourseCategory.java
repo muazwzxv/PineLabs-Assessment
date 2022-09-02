@@ -3,6 +3,8 @@ package com.pineLabs.PineLabsAssessment.model.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Objects;
+
 @AllArgsConstructor
 @Getter
 public enum CourseCategory {
@@ -12,12 +14,12 @@ public enum CourseCategory {
     PHOTOGRAPHY(4),
     MOTIVATION(5);
 
-    private int code;
+    private Integer code;
 
-    public static String getName(int code) {
+    public static String getName(Integer code) {
         String name = "";
         for (CourseCategory category : CourseCategory.values()) {
-            if (category.getCode() == code) {
+            if (Objects.equals(category.getCode(), code)) {
                 name = category.toString();
                 break;
             }

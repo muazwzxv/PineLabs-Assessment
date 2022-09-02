@@ -5,7 +5,6 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @MappedSuperclass
@@ -13,8 +12,8 @@ public abstract class AbstractModel {
 
     @Id
     @GeneratedValue
-    @JsonProperty("uid")
-    protected UUID id;
+    @JsonProperty("id")
+    protected Long id;
 
     @JsonProperty("created_on")
     protected LocalDateTime created_on;

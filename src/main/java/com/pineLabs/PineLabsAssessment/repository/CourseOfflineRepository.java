@@ -1,7 +1,6 @@
 package com.pineLabs.PineLabsAssessment.repository;
 
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
-import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -9,11 +8,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
-public interface CourseOfflineRepository extends JpaRepository<CourseOffline, UUID> {
+public interface CourseOfflineRepository extends JpaRepository<CourseOffline, Long> {
 
-    List<CourseOffline> getCourseOfflineByStatus(CourseStatus status);
+    List<CourseOffline> getCourseOfflineByStatus(Integer status);
 
     @Modifying
     @Query(
@@ -25,7 +23,7 @@ public interface CourseOfflineRepository extends JpaRepository<CourseOffline, UU
                     "co.courseDate = :courseDate," +
                     "co.instructorName = :instructorName," +
                     "co.totalStudent = :totalStudent " +
-                    "where co.id = :uid"
+                    "where co.id = :id"
 
     )
     void updateCourse(
@@ -38,6 +36,6 @@ public interface CourseOfflineRepository extends JpaRepository<CourseOffline, UU
             @Param(value = "totalStudent") Integer totalStudent,
 
             // id
-            @Param(value = "uid") UUID uid
+            @Param(value = "id") Long id
     );
 }

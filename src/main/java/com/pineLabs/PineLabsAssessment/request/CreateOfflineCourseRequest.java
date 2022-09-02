@@ -3,7 +3,6 @@ package com.pineLabs.PineLabsAssessment.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import lombok.Getter;
 
 import javax.validation.constraints.Future;
@@ -27,7 +26,7 @@ public class CreateOfflineCourseRequest {
 
     @JsonProperty("category")
 //    @ValueOfEnum(enumClass = CourseCategory.class)
-    private CourseCategory category;
+    private int category;
 
     @JsonProperty("venue")
     @NotBlank

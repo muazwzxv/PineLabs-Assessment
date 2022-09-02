@@ -1,7 +1,7 @@
 package com.pineLabs.PineLabsAssessment.model;
 
 
-import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -20,17 +20,28 @@ import java.time.LocalDate;
 @SQLDelete(sql = "UPDATE course_offline SET deleted_on = NOW() WHERE id= ?")
 @Where(clause = "deleted_on IS NULL")
 public class CourseOffline extends AbstractModel {
+    @JsonProperty("course_name")
     private String courseName;
+
+    @JsonProperty("description")
     private String description;
+
+    @JsonProperty("instructor_name")
     private String instructorName;
 
-    private int category;
+    @JsonProperty("category")
+    private Integer category;
 
-    private CourseStatus status;
+    @JsonProperty("status")
+    private Integer status;
 
+    @JsonProperty("course_date")
     private LocalDate courseDate;
 
+    @JsonProperty("venue")
     private String venue;
+
+    @JsonProperty("total_student")
     private Integer totalStudent;
 }
 

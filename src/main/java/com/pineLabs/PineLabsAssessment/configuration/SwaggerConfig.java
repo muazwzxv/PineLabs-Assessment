@@ -12,7 +12,7 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI openAPI() {
-        Info info = new Info().title("Pine Labs Assessment Muaz&Ali")
+        Info info = new Info().title("Pine Labs Assessment Muaz & Ali")
                 .description("Offline and online courses");
         return new OpenAPI()
                 .components(new Components())

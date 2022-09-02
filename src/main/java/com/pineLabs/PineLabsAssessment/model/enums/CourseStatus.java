@@ -8,7 +8,9 @@ import lombok.Getter;
 public enum CourseStatus {
     ACTIVE(1),
     ARCHIVED(2),
-    PENDING(3);
+    PENDING(3),
+
+    DELETED(4);
 
     private int code;
 

@@ -29,7 +29,7 @@ public class CourseController {
             case "online":
                 return new ResponseEntity<>(this.courseOnlineService.findAllActiveCourses(), HttpStatus.OK);
             default:
-                throw new RuntimeException("Invalid arguments");
+                throw new InvalidParameterException();
         }
     }
 

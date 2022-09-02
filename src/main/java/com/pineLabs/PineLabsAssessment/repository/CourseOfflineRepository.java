@@ -1,7 +1,6 @@
 package com.pineLabs.PineLabsAssessment.repository;
 
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
-import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -31,7 +30,7 @@ public interface CourseOfflineRepository extends JpaRepository<CourseOffline, UU
     )
     void updateCourse(
             @Param(value = "courseName") String courseName,
-            @Param(value = "courseCategory") CourseCategory courseCategory,
+            @Param(value = "courseCategory") int courseCategory,
             @Param(value = "description") String description,
             @Param(value = "venue") String venue,
             @Param(value = "courseDate") LocalDate courseDate,

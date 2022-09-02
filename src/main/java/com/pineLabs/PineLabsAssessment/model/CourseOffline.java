@@ -1,6 +1,7 @@
 package com.pineLabs.PineLabsAssessment.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import lombok.*;
@@ -23,19 +24,30 @@ import java.time.LocalDate;
 @SQLDelete(sql = "UPDATE course_offline SET deleted_on = NOW() WHERE id= ?")
 @Where(clause = "deleted_on IS NULL")
 public class CourseOffline extends AbstractModel {
+    @JsonProperty("course_name")
     private String courseName;
+
+    @JsonProperty("description")
     private String description;
+
+    @JsonProperty("instructor_name")
     private String instructorName;
 
+    @JsonProperty("category")
     @Enumerated(EnumType.STRING)
     private CourseCategory category;
 
+    @JsonProperty("status")
     @Enumerated(EnumType.STRING)
     private CourseStatus status;
 
+    @JsonProperty("course_date")
     private LocalDate courseDate;
 
+    @JsonProperty("venue")
     private String venue;
+
+    @JsonProperty("total_student")
     private Integer totalStudent;
 }
 

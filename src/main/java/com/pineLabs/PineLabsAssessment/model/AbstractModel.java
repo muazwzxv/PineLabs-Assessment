@@ -1,5 +1,6 @@
 package com.pineLabs.PineLabsAssessment.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -12,9 +13,16 @@ public abstract class AbstractModel {
 
     @Id
     @GeneratedValue
+    @JsonProperty("uid")
     protected UUID id;
+
+    @JsonProperty("created_on")
     protected LocalDateTime created_on;
+
+    @JsonProperty("updated_on")
     protected LocalDateTime updated_on;
+
+    @JsonProperty("deleted_on")
     protected LocalDateTime deleted_on;
 
     @PrePersist

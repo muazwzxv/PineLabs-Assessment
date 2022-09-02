@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Setter
 @Builder
 @Table(name = "course_online")
-@SQLDelete(sql = "UPDATE course_online SET deleted_on = NOW() WHERE id= ?")
+@SQLDelete(sql = "UPDATE course_online SET deleted_on = NOW(), status = 4 WHERE id= ?")
 @Where(clause = "deleted_on IS NULL")
 public class CourseOnline extends AbstractModel {
 
@@ -39,6 +39,7 @@ public class CourseOnline extends AbstractModel {
     @JsonProperty("category")
     private int category;
 
+    @JsonProperty("total_student")
     private Integer totalStudent;
 
     @JsonProperty("course_date")

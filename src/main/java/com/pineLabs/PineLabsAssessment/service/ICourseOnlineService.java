@@ -4,14 +4,13 @@ import com.pineLabs.PineLabsAssessment.model.CourseOnline;
 import com.pineLabs.PineLabsAssessment.request.CreateOnlineCourseRequest;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface ICourseOnlineService extends IService<CourseOnline, UUID> {
+public interface ICourseOnlineService extends IService<CourseOnline, Long> {
     List<CourseOnline> findAllActiveCourses();
 
     CourseOnline create(CreateOnlineCourseRequest req);
 
-    CourseOnline updateById(UUID uid, CreateOnlineCourseRequest req);
+    CourseOnline updateById(Long id, CreateOnlineCourseRequest req);
 
 //    Optional<CourseOnline> updateById(CourseOnline updatedCourse, UUID uuid);
 

@@ -4,14 +4,13 @@ import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface ICourseOfflineService extends IService<CourseOffline, UUID> {
+public interface ICourseOfflineService extends IService<CourseOffline, Long> {
     List<CourseOffline> findAllActiveCourses();
 
     CourseOffline create(CreateOfflineCourseRequest req);
 
-    CourseOffline updateById(UUID uid, CreateOfflineCourseRequest req);
+    CourseOffline updateById(Long id, CreateOfflineCourseRequest req);
 
-    void updateByIdJpa(UUID uid, CreateOfflineCourseRequest req);
+    void updateByIdJpa(Long id, CreateOfflineCourseRequest req);
 }

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -20,10 +19,10 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     private final CourseOfflineRepository courseOfflineRepository;
 
     @Override
-    public CourseOffline findById(UUID uid) throws CourseNotFoundException {
-        Optional<CourseOffline> course = this.courseOfflineRepository.findById(uid);
+    public CourseOffline findById(Long id) throws CourseNotFoundException {
+        Optional<CourseOffline> course = this.courseOfflineRepository.findById(id);
         if (!course.isPresent())
-            throw new CourseNotFoundException("UUID", uid.toString());
+            throw new CourseNotFoundException("ID", id);
 
         return course.get();
     }
@@ -34,13 +33,13 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     }
 
     @Override
-    public CourseOffline deleteById(UUID uid) {
-        Optional<CourseOffline> courseOffline = this.courseOfflineRepository.findById(uid);
+    public CourseOffline deleteById(Long id) {
+        Optional<CourseOffline> courseOffline = this.courseOfflineRepository.findById(id);
         if (!courseOffline.isPresent())
-            throw new CourseNotFoundException("UUID", uid);
+            throw new CourseNotFoundException("ID", id);
 
         try {
-            this.courseOfflineRepository.deleteById(uid);
+            this.courseOfflineRepository.deleteById(id);
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
@@ -50,7 +49,7 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
 
     @Override
     public List<CourseOffline> findAllActiveCourses() {
-        return this.courseOfflineRepository.getCourseOfflineByStatus(CourseStatus.ACTIVE);
+        return this.courseOfflineRepository.getCourseOfflineByStatus(CourseStatus.ACTIVE.getCode());
     }
 
     @Override
@@ -69,10 +68,10 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
     }
 
     @Override
-    public CourseOffline updateById(UUID uid, CreateOfflineCourseRequest request) {
-        Optional<CourseOffline> course = this.courseOfflineRepository.findById(uid);
+    public CourseOffline updateById(Long id, CreateOfflineCourseRequest request) {
+        Optional<CourseOffline> course = this.courseOfflineRepository.findById(id);
         if (!course.isPresent())
-            throw new CourseNotFoundException("UUID", uid.toString());
+            throw new CourseNotFoundException("ID", id);
 
         CourseOffline courseToUpdate = course.get();
 
@@ -90,10 +89,10 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
 
 
     @Override
-    public void updateByIdJpa(UUID uid, CreateOfflineCourseRequest request) {
-        boolean found = this.courseOfflineRepository.existsById(uid);
+    public void updateByIdJpa(Long id, CreateOfflineCourseRequest request) {
+        boolean found = this.courseOfflineRepository.existsById(id);
         if (!found)
-            throw new CourseNotFoundException("UUID", uid.toString());
+            throw new CourseNotFoundException("ID", id);
 
         this.courseOfflineRepository
                 .updateCourse(
@@ -104,7 +103,7 @@ public class CourseOfflineServiceImpl implements ICourseOfflineService {
                         request.getCourseDate(),
                         request.getInstructorName(),
                         request.getTotalStudent(),
-                        uid
+                        id
                 );
     }
 }

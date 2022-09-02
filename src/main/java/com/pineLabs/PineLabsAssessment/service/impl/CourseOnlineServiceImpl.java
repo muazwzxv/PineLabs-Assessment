@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -20,10 +19,10 @@ public class CourseOnlineServiceImpl implements ICourseOnlineService {
 
     private final CourseOnlineRepository courseOnlineRepository;
 
-    public CourseOnline findById(UUID uid) throws CourseNotFoundException {
-        Optional<CourseOnline> course = this.courseOnlineRepository.findById(uid);
+    public CourseOnline findById(Long id) throws CourseNotFoundException {
+        Optional<CourseOnline> course = this.courseOnlineRepository.findById(id);
         if (!course.isPresent())
-            throw new CourseNotFoundException("UUID", uid.toString());
+            throw new CourseNotFoundException("ID", id);
         return course.get();
     }
 
@@ -32,13 +31,13 @@ public class CourseOnlineServiceImpl implements ICourseOnlineService {
     }
 
     @Override
-    public CourseOnline deleteById(UUID uid) {
-        Optional<CourseOnline> courseOnline = this.courseOnlineRepository.findById(uid);
+    public CourseOnline deleteById(Long id) {
+        Optional<CourseOnline> courseOnline = this.courseOnlineRepository.findById(id);
         if (!courseOnline.isPresent())
-            throw new CourseNotFoundException("UUID", uid);
+            throw new CourseNotFoundException("ID", id);
 
         try {
-            this.courseOnlineRepository.deleteById(uid);
+            this.courseOnlineRepository.deleteById(id);
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
@@ -64,10 +63,10 @@ public class CourseOnlineServiceImpl implements ICourseOnlineService {
         return this.courseOnlineRepository.save(course);
     }
 
-    public CourseOnline updateById(UUID uid, CreateOnlineCourseRequest request) {
-        Optional<CourseOnline> course = this.courseOnlineRepository.findById(uid);
+    public CourseOnline updateById(Long id, CreateOnlineCourseRequest request) {
+        Optional<CourseOnline> course = this.courseOnlineRepository.findById(id);
         if (!course.isPresent())
-            throw new CourseNotFoundException("UUID", uid.toString());
+            throw new CourseNotFoundException("ID", id);
 
         CourseOnline courseToUpdate = course.get();
 

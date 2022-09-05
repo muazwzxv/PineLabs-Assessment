@@ -1,7 +1,7 @@
 package com.pineLabs.PineLabsAssessment.service;
 
 import com.pineLabs.PineLabsAssessment.model.CourseOnline;
-import com.pineLabs.PineLabsAssessment.request.CreateOnlineCourseRequest;
+import com.pineLabs.PineLabsAssessment.dto.CreateOnlineCourseRequest;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.pineLabs.PineLabsAssessment.controller;
 
 import com.pineLabs.PineLabsAssessment.exception.InvalidParameterException;
-import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
-import com.pineLabs.PineLabsAssessment.request.CreateOnlineCourseRequest;
+import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
+import com.pineLabs.PineLabsAssessment.dto.CreateOnlineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import com.pineLabs.PineLabsAssessment.service.ICourseOnlineService;
 import lombok.AllArgsConstructor;

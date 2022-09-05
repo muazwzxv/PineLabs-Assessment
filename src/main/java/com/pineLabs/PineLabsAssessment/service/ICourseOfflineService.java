@@ -1,7 +1,7 @@
 package com.pineLabs.PineLabsAssessment.service;
 
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
-import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
+import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import com.pineLabs.PineLabsAssessment.exception.CourseNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
-import com.pineLabs.PineLabsAssessment.request.CreateOfflineCourseRequest;
+import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataAccessException;

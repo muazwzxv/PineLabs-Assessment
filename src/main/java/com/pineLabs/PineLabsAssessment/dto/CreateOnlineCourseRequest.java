@@ -1,4 +1,4 @@
-package com.pineLabs.PineLabsAssessment.request;
+package com.pineLabs.PineLabsAssessment.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

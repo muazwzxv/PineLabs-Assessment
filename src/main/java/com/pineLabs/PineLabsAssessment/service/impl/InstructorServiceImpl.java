@@ -1,5 +1,6 @@
 package com.pineLabs.PineLabsAssessment.service.impl;
 
+import com.pineLabs.PineLabsAssessment.dto.CreateInstructor;
 import com.pineLabs.PineLabsAssessment.exception.InstructorNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.Instructor;
 import com.pineLabs.PineLabsAssessment.repository.InstructorRepository;
@@ -16,6 +17,18 @@ import java.util.Optional;
 public class InstructorServiceImpl implements InstructorService {
 
     private final InstructorRepository instructorRepository;
+
+    @Override
+    public Instructor create(CreateInstructor dto) {
+        Instructor instructor = Instructor.builder()
+                .instructorName(dto.getInstructorName())
+                .email(dto.getEmail())
+                .officeRoom(dto.getOfficeRoom())
+                .employeeId(dto.getEmployeeId())
+                .build();
+
+        return this.instructorRepository.save(instructor);
+    }
 
     @Override
     public Instructor findById(Long id) {

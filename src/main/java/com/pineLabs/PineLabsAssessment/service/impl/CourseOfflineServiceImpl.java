@@ -1,11 +1,11 @@
 package com.pineLabs.PineLabsAssessment.service.impl;
 
+import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.exception.CourseNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOfflineRepository;
-import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
-import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
+import com.pineLabs.PineLabsAssessment.service.CourseOfflineService;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @Service
-public class CourseOfflineServiceImpl implements ICourseOfflineService {
+public class CourseOfflineServiceImpl implements CourseOfflineService {
     private final CourseOfflineRepository courseOfflineRepository;
 
     @Override

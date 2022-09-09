@@ -1,10 +1,10 @@
 package com.pineLabs.PineLabsAssessment.controller;
 
-import com.pineLabs.PineLabsAssessment.exception.InvalidParameterException;
 import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
 import com.pineLabs.PineLabsAssessment.dto.CreateOnlineCourseRequest;
-import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
-import com.pineLabs.PineLabsAssessment.service.ICourseOnlineService;
+import com.pineLabs.PineLabsAssessment.exception.InvalidParameterException;
+import com.pineLabs.PineLabsAssessment.service.CourseOfflineService;
+import com.pineLabs.PineLabsAssessment.service.CourseOnlineService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class CourseController {
 
-    private final ICourseOfflineService courseOfflineService;
-    private final ICourseOnlineService courseOnlineService;
+    private final CourseOfflineService courseOfflineService;
+    private final CourseOnlineService courseOnlineService;
 
     @GetMapping
     public ResponseEntity<?> getAll(@RequestParam(name = "status") String status) {

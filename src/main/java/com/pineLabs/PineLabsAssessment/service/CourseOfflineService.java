@@ -1,11 +1,11 @@
 package com.pineLabs.PineLabsAssessment.service;
 
-import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 import com.pineLabs.PineLabsAssessment.dto.CreateOfflineCourseRequest;
+import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 
 import java.util.List;
 
-public interface ICourseOfflineService extends IService<CourseOffline, Long> {
+public interface CourseOfflineService extends IService<CourseOffline, Long> {
     List<CourseOffline> findAllActiveCourses();
 
     CourseOffline create(CreateOfflineCourseRequest req);

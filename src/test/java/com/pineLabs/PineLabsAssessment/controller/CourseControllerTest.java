@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pineLabs.PineLabsAssessment.model.CourseOffline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseCategory;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
-import com.pineLabs.PineLabsAssessment.service.ICourseOfflineService;
+import com.pineLabs.PineLabsAssessment.service.CourseOfflineService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,7 +28,7 @@ public class CourseControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private ICourseOfflineService offlineService;
+    private CourseOfflineService offlineService;
 
     @Autowired
     private ObjectMapper objectMapper;

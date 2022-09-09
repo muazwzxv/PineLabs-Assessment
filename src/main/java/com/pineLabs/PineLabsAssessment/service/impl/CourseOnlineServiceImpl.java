@@ -1,11 +1,11 @@
 package com.pineLabs.PineLabsAssessment.service.impl;
 
+import com.pineLabs.PineLabsAssessment.dto.CreateOnlineCourseRequest;
 import com.pineLabs.PineLabsAssessment.exception.CourseNotFoundException;
 import com.pineLabs.PineLabsAssessment.model.CourseOnline;
 import com.pineLabs.PineLabsAssessment.model.enums.CourseStatus;
 import com.pineLabs.PineLabsAssessment.repository.CourseOnlineRepository;
-import com.pineLabs.PineLabsAssessment.dto.CreateOnlineCourseRequest;
-import com.pineLabs.PineLabsAssessment.service.ICourseOnlineService;
+import com.pineLabs.PineLabsAssessment.service.CourseOnlineService;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @Service
-public class CourseOnlineServiceImpl implements ICourseOnlineService {
+public class CourseOnlineServiceImpl implements CourseOnlineService {
 
     private final CourseOnlineRepository courseOnlineRepository;
 
